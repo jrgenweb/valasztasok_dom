@@ -5,7 +5,7 @@ let maxPage = 0;
 let currentPage = 1;
 let previousPage = 1;
 let nextPage = 1;
-
+//ebből jelenítem meg az adatokat
 let filteredData = [];
 
 let animationDuration = 0.3;
