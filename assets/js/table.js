@@ -8,7 +8,9 @@ let nextPage = 1;
 //ebből jelenítem meg az adatokat
 let filteredData = [];
 
-let animationDuration = 0.3;
+let animationDuration = 0.6;
+//ez csak azért kell hogy az oldal betöltsékor ne csusszon szét az animációm
+let firstLoad = true;
 
 function filter(lastName = "", firstName = "", faction = "") {
   filteredData = votesArray.filter((element) => {
@@ -79,33 +81,43 @@ function getNextPage(currentPage) {
  *
  */
 function updateTableBody(filteredData, index) {
-  beforeUpdate();
+  if (!firstLoad) {
+    beforeUpdate();
+  }
 
-  setTimeout(() => {
-    const tbodyEl = document.querySelector("table tbody");
-    tbodyEl.innerHTML = "";
-    let startIndex = (index - 1) * pages <= 0 ? 0 : (index - 1) * pages;
-    let endIndex =
-      index * pages > filteredData.length ? filteredData.length : index * pages;
+  setTimeout(
+    () => {
+      const tbodyEl = document.querySelector("table tbody");
+      tbodyEl.innerHTML = "";
+      let startIndex = (index - 1) * pages <= 0 ? 0 : (index - 1) * pages;
+      let endIndex =
+        index * pages > filteredData.length
+          ? filteredData.length
+          : index * pages;
 
-    //console.log(filteredData.length, "filtereztük");
-    //ez csak a lehető legegyszerűbben megoldott, ha nincs adat
-    if (filteredData.length < 1) {
-      tbodyEl.appendChild(
-        createTableBodyElements({
-          emty: "",
-          emt: "",
-          empty: "Nincs megjeleníthető adat",
-          emty2: "",
-          emty3: "",
-        })
-      );
-    } else {
-      for (let i = startIndex; i < endIndex; i++) {
-        tbodyEl.appendChild(createTableBodyElements(filteredData[i]));
+      //console.log(filteredData.length, "filtereztük");
+      //ez csak a lehető legegyszerűbben megoldott, ha nincs adat
+      if (filteredData.length < 1) {
+        tbodyEl.appendChild(
+          createTableBodyElements({
+            emty: "",
+            emt: "",
+            empty: "Nincs megjeleníthető adat",
+            emty2: "",
+            emty3: "",
+          })
+        );
+      } else {
+        for (let i = startIndex; i < endIndex; i++) {
+          tbodyEl.appendChild(createTableBodyElements(filteredData[i]));
+        }
       }
-    }
-  }, animationDuration * 1000 * 1.5);
+    },
+
+    firstLoad ? 0 : animationDuration * 1000 * 1.5
+  );
+
+  firstLoad = false;
 }
 
 /** ez csak egy kis animáció kezeléshez kell */
@@ -113,7 +125,7 @@ function beforeUpdate() {
   document.querySelector("table tbody").classList.add("rotate");
   setTimeout(() => {
     document.querySelector("table tbody").classList.remove("rotate");
-  }, 1500);
+  }, animationDuration * 1000 * 1.5);
 }
 
 /**
