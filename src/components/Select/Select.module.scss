@@ -1,0 +1,72 @@
+@import "../../sass/form-controls";
+@import "../../sass/variables";
+.dropdown {
+    position: relative;
+
+    &-label {
+        cursor: pointer;
+
+        margin-left: -5px; //csak a gyors korrigálásért
+    }
+    &-input {
+        width: 100%;
+        cursor: pointer;
+
+        /* lista megjelenitése */
+        &:not(:placeholder-shown) + .dropdown-list,
+        &:active + .dropdown-list,
+        &:focus + .dropdown-list {
+            //display block
+            position: absolute;
+            animation: fadeIn 0.3s ease-in forwards;
+        }
+    }
+    //nyil elem
+    &::after {
+        content: "\f107";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        right: $spacing;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        //animation: caretRotation 1.3s ease infinite;
+    }
+    //nyil elem forgatása
+    &:has(.dropdown-input:active),
+    &:has(.dropdown-input:focus) {
+        &::after {
+            animation: caretRotation 0.3s ease forwards;
+        }
+    }
+    &-list {
+        display: none;
+        position: absolute;
+        z-index: 100;
+        top: calc($spacing + 50px);
+        background-color: $clr-white;
+        width: 100%;
+        border-radius: $br-radius;
+        box-shadow: $box-shadow;
+        & ~ input:not(::placeholder-shown) {
+            display: block;
+        }
+        &.active {
+            display: block;
+        }
+    }
+    &-option {
+        padding: $spacing;
+        font-weight: bold;
+
+        cursor: pointer;
+        &:hover {
+            background-color: rgba($clr-grey, 0.2);
+        }
+        &:nth-child(odd) {
+            background-color: rgba($clr-grey, 0.4);
+        }
+    }
+}

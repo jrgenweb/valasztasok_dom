@@ -1,0 +1,129 @@
+@use "reset";
+@use "fonts";
+@use "variables" as *;
+@use "form-controls";
+@use "animations";
+
+body {
+    background:
+        linear-gradient(rgba($clr-gradient-primary, $opacity), rgba($clr-gradient-secondary, $opacity)),
+        url(../../public/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    font-family: "Monserrat", sans-serif;
+
+    color: $text-primary;
+    //backdrop-filter: grayscale(100%);
+    display: grid;
+    place-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 800px;
+    width: 500px;
+    margin-inline: auto;
+
+    padding: 0.5rem;
+    background-color: rgba($clr-grey, 0.499);
+    backdrop-filter: blur(10px);
+    border-radius: $br-radius;
+
+    box-shadow: $box-shadow;
+}
+
+table,
+.panel {
+    box-shadow: $box-shadow;
+    border-radius: $br-radius;
+    //overflow: hidden;
+    padding: 10px;
+    background-color: $clr-white;
+}
+
+/* text */
+
+h1 {
+    margin-bottom: 1rem;
+    padding-left: calc($spacing * 2);
+    position: relative;
+    font-family: "Bebas Neue";
+    letter-spacing: 1.5px;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 5px;
+        height: 100%;
+        background-color: $clr-blue;
+        left: 0;
+        border-radius: $br-radius;
+        opacity: 0.5;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    body {
+        padding: 0.5rem;
+    }
+    .container {
+        width: 100%;
+    }
+    .filter {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        > div:nth-child(1) {
+            grid-column: auto;
+            grid-row: auto;
+        }
+        > div:nth-child(2) {
+            grid-column: auto;
+            grid-row: auto;
+        }
+        > div:nth-child(3) {
+            grid-column: auto;
+            grid-row: auto;
+        }
+        > div:nth-child(4) {
+            grid-column: auto;
+            grid-row: auto;
+        }
+    }
+
+    /* scrollozható legyen kisebb képernyőn vagy mobilon a tábla */
+    div:has(.table) {
+        overflow-x: auto;
+    }
+}
+
+/* 
+
+    egyedi scroll bar 
+    https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp
+
+*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: $br-radius;
+    background: rgba($clr-black, 0.2);
+    transition: $transition-duration;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba($clr-black, 0.4);
+}

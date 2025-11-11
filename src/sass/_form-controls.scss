@@ -1,0 +1,23 @@
+@use "_variables" as *;
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    label {
+        position: absolute;
+        top: 50%;
+        left: $spacing;
+        transform: translateY(-50%);
+        font-weight: 100;
+        transition: 0.3s;
+        color: rgba($clr-black, 0.7);
+        &:has(+ input:focus),
+        &:has(+ input:not(:placeholder-shown)) {
+            scale: 0.7;
+            top: 5px;
+            left: calc($spacing / 2);
+        }
+    }
+}

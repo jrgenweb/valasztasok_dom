@@ -1,0 +1,23 @@
+/* szín változók */
+$clr-primary: #4ba3c3;
+$clr-secondary: #ef3e36;
+$clr-white: #f4f4f8; //ghost white
+$clr-grey: #ccc; // #e6e6ea; //platinum
+$clr-black: #0f1020;
+$clr-blue: #4ba3c3;
+
+/* háttérképhez*/
+$clr-gradient-primary: rgb(120, 212, 23);
+$clr-gradient-secondary: rgb(15, 173, 235);
+
+$text-primary: $clr-black;
+
+$opacity: 0.5;
+$transition-duration: 0.3s;
+
+$br-radius: 10px;
+$spacing: 0.5rem;
+
+/* árnyék */
+$box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.298);
+$form-control-padding: 0.25rem;

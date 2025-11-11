@@ -1,0 +1,85 @@
+@import "../../sass/variables";
+.table {
+    border-collapse: collapse;
+    //border: 1px solid $clr-primary;
+
+    border-spacing: 30px;
+
+    width: 100%;
+    overflow: hidden;
+
+    tr {
+        transition: $transition-duration;
+    }
+    tr:hover,
+    tr:nth-child(even):hover {
+        background-color: rgba($clr-grey, 0.2);
+        cursor: pointer;
+    }
+    tr:nth-child(even) {
+        background-color: rgba($clr-grey, 0.3);
+    }
+    td {
+        padding: 0.25rem;
+        text-align: center;
+    }
+    tr:has(th) {
+        //background-color: blue;
+        border-radius: 10px;
+        padding: 1rem;
+    }
+    th {
+        padding: 0.25rem;
+        text-align: center;
+    }
+
+    &:hover {
+        //scale: 1.01;
+    }
+    thead {
+        //background-color: rgba($clr-blue, 0.3);
+    }
+    tfoot {
+        background-color: rgba($clr-blue, 0.3);
+        tr:nth-child(2) {
+            td {
+            }
+        }
+        button {
+            background-color: $clr-blue;
+            border-radius: 50%;
+            width: 32px;
+            aspect-ratio: 1;
+            padding: 0;
+            outline: 0;
+            border: 0;
+            color: $clr-white;
+            cursor: pointer;
+        }
+    }
+    tbody {
+        position: relative;
+        height: 100px; //min height
+    }
+
+    tbody.rotate::after {
+        content: "\f110";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 2rem;
+        width: 700%;
+        height: 700%;
+        background-color: rgba($clr-black, 0.5);
+        position: absolute;
+        top: -300%;
+        left: -300%;
+        color: $clr-white;
+        //a középre igazítás miatt (flex), de none, hogy js-el elrejtsük
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        //forgatás animáció ez az egész divet animája majd
+        animation: tableLoadingAnimation 2s infinite;
+    }
+}

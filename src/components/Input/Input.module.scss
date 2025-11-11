@@ -1,0 +1,19 @@
+@import "../../sass/_variables.scss";
+input {
+    padding: $spacing;
+    outline: 0;
+    border: 0;
+    // border-bottom: 5px solid $clr-primary;
+    border-radius: $br-radius;
+    padding: 1rem;
+    &:focus {
+        //scale: 1.05;
+    }
+}
+
+//placeholder eltüntetése
+input {
+    &::placeholder {
+        opacity: 0;
+    }
+}
