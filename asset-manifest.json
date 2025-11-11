@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/valasztasok_dom/static/css/main.75f4dd39.css",
+    "main.js": "/valasztasok_dom/static/js/main.218a0c18.js",
+    "static/js/453.b828607b.chunk.js": "/valasztasok_dom/static/js/453.b828607b.chunk.js",
+    "static/media/bg.jpg": "/valasztasok_dom/static/media/bg.75ceba6e1020dc517f1e.jpg",
+    "index.html": "/valasztasok_dom/index.html",
+    "main.75f4dd39.css.map": "/valasztasok_dom/static/css/main.75f4dd39.css.map",
+    "main.218a0c18.js.map": "/valasztasok_dom/static/js/main.218a0c18.js.map",
+    "453.b828607b.chunk.js.map": "/valasztasok_dom/static/js/453.b828607b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.75f4dd39.css",
+    "static/js/main.218a0c18.js"
+  ]
+}
